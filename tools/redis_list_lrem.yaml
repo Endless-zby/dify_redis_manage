@@ -1,0 +1,55 @@
+identity:
+  name: redis_list_lrem
+  author: byzhao
+  label:
+    en_US: Redis List LREM
+    zh_Hans: Redis列表移除元素
+description:
+  human:
+    en_US: Removes the first count occurrences of elements equal to value from the list stored at key
+    zh_Hans: 从存储在键处的列表中移除与值相等的前count个元素
+  llm: "Removes the first count occurrences of elements equal to value from the list stored at key. This tool requires three parameters: key, count and value."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key of the list
+      zh_Hans: 列表的键
+    llm_description: The key of the list. This should be a string.
+    form: llm
+  - name: count
+    type: number
+    required: true
+    label:
+      en_US: Count
+      zh_Hans: 数量
+    human_description:
+      en_US: The number of elements to remove
+      zh_Hans: 要移除的元素数量
+    llm_description: The number of elements to remove. Use 0 to remove all, positive to remove from head, negative to remove from tail.
+    form: llm
+  - name: value
+    type: string
+    required: true
+    label:
+      en_US: Value
+      zh_Hans: 值
+    human_description:
+      en_US: The value to remove
+      zh_Hans: 要移除的值
+    llm_description: The value to remove from the list.
+    form: llm
+extra:
+  python:
+    source: tools/redis_list_lrem.py
+
+output_schema:
+  type: object
+  properties:
+    removed:
+      type: integer
+      description: The number of removed elements

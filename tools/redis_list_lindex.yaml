@@ -1,0 +1,44 @@
+identity:
+  name: redis_list_lindex
+  author: byzhao
+  label:
+    en_US: Redis List LINDEX
+    zh_Hans: Redis列表索引
+description:
+  human:
+    en_US: Returns the element at index index in the list stored at key
+    zh_Hans: 返回存储在键处的列表中索引位置的元素
+  llm: "Returns the element at index index in the list stored at key. This tool requires two parameters: key and index."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key of the list
+      zh_Hans: 列表的键
+    llm_description: The key of the list. This should be a string.
+    form: llm
+  - name: index
+    type: number
+    required: true
+    label:
+      en_US: Index
+      zh_Hans: 索引
+    human_description:
+      en_US: The index of the element
+      zh_Hans: 元素的索引
+    llm_description: The index of the element to retrieve. 0 for the first element, -1 for the last element.
+    form: llm
+extra:
+  python:
+    source: tools/redis_list_lindex.py
+
+output_schema:
+  type: object
+  properties:
+    value:
+      type: string
+      description: The requested element, or null when index is out of range

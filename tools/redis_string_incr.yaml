@@ -1,0 +1,33 @@
+identity:
+  name: redis_string_incr
+  author: byzhao
+  label:
+    en_US: Redis String Increment
+    zh_Hans: Redis递增String
+description:
+  human:
+    en_US: Increment the integer value of a key by one
+    zh_Hans: 将键的整数值递增1
+  llm: "Increment the integer value of a key by one. This tool requires one parameter: key."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key whose value should be incremented
+      zh_Hans: 需要递增的键
+    llm_description: The key whose integer value should be incremented by one. The key must exist and contain an integer value.
+    form: llm
+extra:
+  python:
+    source: tools/redis_string_incr.py
+
+output_schema:
+  type: object
+  properties:
+    value:
+      type: integer
+      description: The new value after incrementing

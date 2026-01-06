@@ -1,0 +1,44 @@
+identity:
+  name: redis_geo_rem
+  author: byzhao
+  label:
+    en_US: Redis Geo Remove
+    zh_Hans: Redis移除地理位置
+description:
+  human:
+    en_US: Remove geospatial items from a key
+    zh_Hans: 从键中移除地理位置项
+  llm: "Remove geospatial items from a key. This tool requires two parameters: key and members."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key to remove geospatial items from
+      zh_Hans: 要移除地理位置项的键
+    llm_description: The key to remove geospatial items from. This should be a string.
+    form: llm
+  - name: members
+    type: string
+    required: true
+    label:
+      en_US: Members
+      zh_Hans: 成员
+    human_description:
+      en_US: The member names to remove (comma separated)
+      zh_Hans: 要移除的成员名称（逗号分隔）
+    llm_description: The member names to remove. Provide comma-separated values.
+    form: llm
+extra:
+  python:
+    source: tools/redis_geo_rem.py
+
+output_schema:
+  type: object
+  properties:
+    removed:
+      type: integer
+      description: The number of members removed

@@ -1,0 +1,33 @@
+identity:
+  name: redis_string_strlen
+  author: byzhao
+  label:
+    en_US: Redis String Length
+    zh_Hans: Redis获取String长度
+description:
+  human:
+    en_US: Get the length of the string value stored at key
+    zh_Hans: 获取存储在键处的字符串值的长度
+  llm: "Get the length of the string value stored at key. This tool requires one parameter: key."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key to get the string length for
+      zh_Hans: 要获取字符串长度的键
+    llm_description: The key to get the string length for.
+    form: llm
+extra:
+  python:
+    source: tools/redis_string_strlen.py
+
+output_schema:
+  type: object
+  properties:
+    length:
+      type: integer
+      description: The length of the string value stored at key

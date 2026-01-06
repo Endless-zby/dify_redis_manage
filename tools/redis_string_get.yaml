@@ -1,0 +1,33 @@
+identity:
+  name: redis_string_get
+  author: byzhao
+  label:
+    en_US: Redis String Get
+    zh_Hans: Redis获取String
+description:
+  human:
+    en_US: Get value from Redis by key
+    zh_Hans: 根据键从Redis获取值
+  llm: "Get value from Redis by key. This tool requires one parameter: key."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key to get value from Redis
+      zh_Hans: 从Redis获取值的键
+    llm_description: The key to get value from Redis. This should be a string.
+    form: llm
+extra:
+  python:
+    source: tools/redis_string_get.py
+
+output_schema:
+  type: object
+  properties:
+    value:
+      type: string
+      description: The value retrieved from Redis, or null if key does not exist

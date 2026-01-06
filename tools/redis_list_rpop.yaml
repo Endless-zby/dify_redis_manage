@@ -1,0 +1,33 @@
+identity:
+  name: redis_list_rpop
+  author: byzhao
+  label:
+    en_US: Redis List RPOP
+    zh_Hans: Redis列表右弹出
+description:
+  human:
+    en_US: Removes and returns the last element of the list stored at key
+    zh_Hans: 移除并返回存储在键处的列表的最后一个元素
+  llm: "Removes and returns the last element of the list stored at key. This tool requires one parameter: key."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key of the list
+      zh_Hans: 列表的键
+    llm_description: The key of the list. This should be a string.
+    form: llm
+extra:
+  python:
+    source: tools/redis_list_rpop.py
+
+output_schema:
+  type: object
+  properties:
+    value:
+      type: string
+      description: The value of the last element, or null when key does not exist

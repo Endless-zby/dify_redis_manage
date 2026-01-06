@@ -1,0 +1,44 @@
+identity:
+  name: redis_list_lpush
+  author: byzhao
+  label:
+    en_US: Redis List LPUSH
+    zh_Hans: Redis列表左插入
+description:
+  human:
+    en_US: Insert all the specified values at the head of the list stored at key
+    zh_Hans: 将所有指定的值插入到存储在键处的列表的头部
+  llm: "Insert all the specified values at the head of the list stored at key. This tool requires two parameters: key and values."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key of the list
+      zh_Hans: 列表的键
+    llm_description: The key of the list. This should be a string.
+    form: llm
+  - name: values
+    type: string
+    required: true
+    label:
+      en_US: Values
+      zh_Hans: 值
+    human_description:
+      en_US: The values to insert at the head of the list (comma separated)
+      zh_Hans: 要插入到列表头部的值（逗号分隔）
+    llm_description: The values to insert at the head of the list. Provide comma-separated values.
+    form: llm
+extra:
+  python:
+    source: tools/redis_list_lpush.py
+
+output_schema:
+  type: object
+  properties:
+    length:
+      type: integer
+      description: The length of the list after the push operation

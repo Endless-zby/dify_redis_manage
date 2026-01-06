@@ -1,0 +1,33 @@
+identity:
+  name: redis_string_decr
+  author: byzhao
+  label:
+    en_US: Redis String Decrement
+    zh_Hans: Redis递减String
+description:
+  human:
+    en_US: Decrement the integer value of a key by one
+    zh_Hans: 将键的整数值递减1
+  llm: "Decrement the integer value of a key by one. This tool requires one parameter: key."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key whose value should be decremented
+      zh_Hans: 需要递减的键
+    llm_description: The key whose integer value should be decremented by one. The key must exist and contain an integer value.
+    form: llm
+extra:
+  python:
+    source: tools/redis_string_decr.py
+
+output_schema:
+  type: object
+  properties:
+    value:
+      type: integer
+      description: The new value after decrementing

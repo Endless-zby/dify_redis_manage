@@ -1,0 +1,55 @@
+identity:
+  name: redis_list_ltrim
+  author: byzhao
+  label:
+    en_US: Redis List LTRIM
+    zh_Hans: Redis列表修剪
+description:
+  human:
+    en_US: Trim an existing list so that it will contain only the specified range of elements
+    zh_Hans: 修剪现有列表，使其只包含指定范围的元素
+  llm: "Trim an existing list so that it will contain only the specified range of elements. This tool requires three parameters: key, start and stop."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key of the list
+      zh_Hans: 列表的键
+    llm_description: The key of the list. This should be a string.
+    form: llm
+  - name: start
+    type: number
+    required: true
+    label:
+      en_US: Start
+      zh_Hans: 起始位置
+    human_description:
+      en_US: The start index
+      zh_Hans: 起始索引
+    llm_description: The start index. 0 for the first element, -1 for the last element.
+    form: llm
+  - name: stop
+    type: number
+    required: true
+    label:
+      en_US: Stop
+      zh_Hans: 结束位置
+    human_description:
+      en_US: The stop index
+      zh_Hans: 结束索引
+    llm_description: The stop index. 0 for the first element, -1 for the last element.
+    form: llm
+extra:
+  python:
+    source: tools/redis_list_ltrim.py
+
+output_schema:
+  type: object
+  properties:
+    result:
+      type: boolean
+      description: Always True

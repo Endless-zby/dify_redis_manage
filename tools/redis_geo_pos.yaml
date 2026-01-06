@@ -1,0 +1,51 @@
+identity:
+  name: redis_geo_pos
+  author: byzhao
+  label:
+    en_US: Redis Geo Position
+    zh_Hans: Redis获取地理位置
+description:
+  human:
+    en_US: Get the position of geospatial items
+    zh_Hans: 获取地理位置项的位置
+  llm: "Get the position of geospatial items. This tool requires two parameters: key and members."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key to get geospatial items from
+      zh_Hans: 要获取地理位置项的键
+    llm_description: The key to get geospatial items from. This should be a string.
+    form: llm
+  - name: members
+    type: string
+    required: true
+    label:
+      en_US: Members
+      zh_Hans: 成员
+    human_description:
+      en_US: The member names (comma separated)
+      zh_Hans: 成员名称（逗号分隔）
+    llm_description: The member names to get positions for. Provide comma-separated values.
+    form: llm
+extra:
+  python:
+    source: tools/redis_geo_pos.py
+
+output_schema:
+  type: object
+  properties:
+    positions:
+      type: array
+      items:
+        type: object
+        properties:
+          longitude:
+            type: number
+          latitude:
+            type: number
+      description: The positions of the members

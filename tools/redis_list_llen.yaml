@@ -1,0 +1,33 @@
+identity:
+  name: redis_list_llen
+  author: byzhao
+  label:
+    en_US: Redis List LLEN
+    zh_Hans: Redis列表长度
+description:
+  human:
+    en_US: Returns the length of the list stored at key
+    zh_Hans: 返回存储在键处的列表的长度
+  llm: "Returns the length of the list stored at key. This tool requires one parameter: key."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key of the list
+      zh_Hans: 列表的键
+    llm_description: The key of the list. This should be a string.
+    form: llm
+extra:
+  python:
+    source: tools/redis_list_llen.py
+
+output_schema:
+  type: object
+  properties:
+    length:
+      type: integer
+      description: The length of the list at key

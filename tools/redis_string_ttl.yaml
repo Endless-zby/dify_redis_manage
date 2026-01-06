@@ -1,0 +1,33 @@
+identity:
+  name: redis_string_ttl
+  author: byzhao
+  label:
+    en_US: Redis String TTL
+    zh_Hans: Redis获取String生存时间
+description:
+  human:
+    en_US: Get the time to live for a key
+    zh_Hans: 获取键的剩余生存时间
+  llm: "Get the time to live for a key. This tool requires one parameter: key."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key to get TTL for
+      zh_Hans: 要获取生存时间的键
+    llm_description: The key to get TTL for. This should be a string.
+    form: llm
+extra:
+  python:
+    source: tools/redis_string_ttl.py
+
+output_schema:
+  type: object
+  properties:
+    ttl:
+      type: integer
+      description: The TTL in seconds, or -1 if key exists but has no associated expire, or -2 if key does not exist

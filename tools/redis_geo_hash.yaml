@@ -1,0 +1,46 @@
+identity:
+  name: redis_geo_hash
+  author: byzhao
+  label:
+    en_US: Redis Geo Hash
+    zh_Hans: Redis获取地理位置哈希
+description:
+  human:
+    en_US: Get the geohash of geospatial items
+    zh_Hans: 获取地理位置项的geohash
+  llm: "Get the geohash of geospatial items. This tool requires two parameters: key and members."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key containing the geospatial items
+      zh_Hans: 包含地理位置项的键
+    llm_description: The key containing the geospatial items. This should be a string.
+    form: llm
+  - name: members
+    type: string
+    required: true
+    label:
+      en_US: Members
+      zh_Hans: 成员
+    human_description:
+      en_US: The member names (comma separated)
+      zh_Hans: 成员名称（逗号分隔）
+    llm_description: The member names to get geohashes for. Provide comma-separated values.
+    form: llm
+extra:
+  python:
+    source: tools/redis_geo_hash.py
+
+output_schema:
+  type: object
+  properties:
+    hashes:
+      type: array
+      items:
+        type: string
+      description: The geohashes of the members

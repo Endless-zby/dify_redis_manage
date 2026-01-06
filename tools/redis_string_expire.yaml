@@ -1,0 +1,44 @@
+identity:
+  name: redis_string_expire
+  author: byzhao
+  label:
+    en_US: Redis String Expire
+    zh_Hans: Redis设置String过期时间
+description:
+  human:
+    en_US: Set a timeout on a key
+    zh_Hans: 为键设置过期时间
+  llm: "Set a timeout on a key. This tool requires two parameters: key and seconds."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key to set timeout on
+      zh_Hans: 要设置过期时间的键
+    llm_description: The key to set timeout on. This should be a string.
+    form: llm
+  - name: seconds
+    type: number
+    required: true
+    label:
+      en_US: Timeout (seconds)
+      zh_Hans: 过期时间（秒）
+    human_description:
+      en_US: Timeout in seconds
+      zh_Hans: 以秒为单位的过期时间
+    llm_description: Timeout in seconds. The key will expire after this many seconds.
+    form: llm
+extra:
+  python:
+    source: tools/redis_string_expire.py
+
+output_schema:
+  type: object
+  properties:
+    result:
+      type: boolean
+      description: Whether the operation was successful

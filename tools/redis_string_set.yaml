@@ -1,0 +1,55 @@
+identity:
+  name: redis_string_set
+  author: byzhao
+  label:
+    en_US: Redis String Set
+    zh_Hans: Redis设置String
+description:
+  human:
+    en_US: Set a key-value pair in Redis
+    zh_Hans: 在Redis中设置键值对
+  llm: "Set a key-value pair in Redis. This tool requires two parameters: key and value. You can optionally set an expiration time in seconds."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key to set in Redis
+      zh_Hans: 要在Redis中设置的键
+    llm_description: The key to set in Redis. This should be a string.
+    form: llm
+  - name: value
+    type: string
+    required: true
+    label:
+      en_US: Value
+      zh_Hans: 值
+    human_description:
+      en_US: The value to set for the key in Redis
+      zh_Hans: 要为键设置的值
+    llm_description: The value to set for the key in Redis. This should be a string.
+    form: llm
+  - name: expire
+    type: number
+    required: false
+    label:
+      en_US: Expire Time (seconds)
+      zh_Hans: 过期时间（秒）
+    human_description:
+      en_US: Expiration time in seconds (optional)
+      zh_Hans: 以秒为单位的过期时间（可选）
+    llm_description: Expiration time in seconds. If provided, the key will expire after this many seconds.
+    form: llm
+extra:
+  python:
+    source: tools/redis_string_set.py
+
+output_schema:
+  type: object
+  properties:
+    result:
+      type: boolean
+      description: Whether the operation was successful

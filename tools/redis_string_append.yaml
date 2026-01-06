@@ -1,0 +1,44 @@
+identity:
+  name: redis_string_append
+  author: byzhao
+  label:
+    en_US: Redis String Append
+    zh_Hans: Redis追加String
+description:
+  human:
+    en_US: Append a value to an existing key
+    zh_Hans: 追加值到已存在的键
+  llm: "Append a value to an existing key. This tool requires two parameters: key and value."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key to append value to
+      zh_Hans: 要追加值的键
+    llm_description: The key to append value to. The key should exist.
+    form: llm
+  - name: value
+    type: string
+    required: true
+    label:
+      en_US: Value
+      zh_Hans: 值
+    human_description:
+      en_US: The value to append to the key
+      zh_Hans: 要追加到键的值
+    llm_description: The value to append to the key.
+    form: llm
+extra:
+  python:
+    source: tools/redis_string_append.py
+
+output_schema:
+  type: object
+  properties:
+    length:
+      type: integer
+      description: The length of the string after the append operation

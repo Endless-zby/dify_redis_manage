@@ -1,0 +1,66 @@
+identity:
+  name: redis_geo_add
+  author: byzhao
+  label:
+    en_US: Redis Geo Add
+    zh_Hans: Redis添加地理位置
+description:
+  human:
+    en_US: Add geospatial items to a key
+    zh_Hans: 向键中添加地理位置项
+  llm: "Add geospatial items to a key. This tool requires four parameters: key, longitude, latitude, and member."
+parameters:
+  - name: key
+    type: string
+    required: true
+    label:
+      en_US: Key
+      zh_Hans: 键
+    human_description:
+      en_US: The key to add geospatial items to
+      zh_Hans: 要添加地理位置项的键
+    llm_description: The key to add geospatial items to. This should be a string.
+    form: llm
+  - name: longitude
+    type: number
+    required: true
+    label:
+      en_US: Longitude
+      zh_Hans: 经度
+    human_description:
+      en_US: The longitude of the item
+      zh_Hans: 项的经度
+    llm_description: The longitude of the item. This should be a number.
+    form: llm
+  - name: latitude
+    type: number
+    required: true
+    label:
+      en_US: Latitude
+      zh_Hans: 纬度
+    human_description:
+      en_US: The latitude of the item
+      zh_Hans: 项的纬度
+    llm_description: The latitude of the item. This should be a number.
+    form: llm
+  - name: member
+    type: string
+    required: true
+    label:
+      en_US: Member
+      zh_Hans: 成员
+    human_description:
+      en_US: The member name
+      zh_Hans: 成员名称
+    llm_description: The member name. This should be a string.
+    form: llm
+extra:
+  python:
+    source: tools/redis_geo_add.py
+
+output_schema:
+  type: object
+  properties:
+    result:
+      type: integer
+      description: The number of elements added to the geospatial index
