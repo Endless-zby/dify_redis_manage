@@ -49,7 +49,7 @@ class RedisManageTool(Tool):
             redis_client.close()
             
             # 返回结果
-            yield self.create_variable_message("value", value)
+            yield self.create_variable_message("value", "" if value is None else value)
             
         except Exception as e:
             yield self.create_text_message(f"Error retrieving key from Redis: {str(e)}")
