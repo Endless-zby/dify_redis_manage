@@ -1,6 +1,6 @@
 version: 0.0.6
 type: plugin
-author: zhaoboya
+author: Endless-zby
 name: dify_redis_manage
 label:
   en_US: redis_manage
