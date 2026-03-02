@@ -1,7 +1,7 @@
 version: 0.0.4
 type: plugin
 author: zhaoboya
-name: redis_manage
+name: dify_redis_manage
 label:
   en_US: redis_manage
 description:
